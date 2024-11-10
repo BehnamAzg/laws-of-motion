@@ -1,0 +1,299 @@
+<!doctype html>
+<html
+  lang="en"
+  id="scrollbar"
+  class="scroll-smooth scrollbar scrollbar-thumb-red-500"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laws of Motion - Join Our Club</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="./assets/icons/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script>
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </head>
+  <body id="top" class="h-[100vh] w-[100vw] bg-neutral-200 dark:bg-neutral-950 overflow-hidden">
+    <header>
+      <!-- Navigation Bar -->
+      <nav
+        id="navbar"
+        class="fixed z-30 flex h-20 w-full flex-wrap items-center px-3 py-3 transition-[top] duration-300 lg:px-10"
+      >
+        <!-- Background -->
+        <div
+          class="relative flex h-full w-full items-center justify-between rounded-lg bg-neutral-100 px-3 dark:bg-neutral-900 sm:px-6"
+        >
+          <!-- Logo -->
+          <div class="float-start flex h-full items-center justify-center">
+            <a href="https://www.lomtumbling.ca">
+              <svg
+                class="w-40 fill-neutral-950 transition-transform ease-out hover:scale-95 hover:fill-red-500 dark:fill-neutral-100 dark:hover:fill-red-500"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 168.97 16"
+              >
+                <path
+                  class="cls-1"
+                  d="M53.63,1.91c3.14,0,5.72.01,5.72.03.01.01-.1.17-.25.33-.15.16-.79.76-2.59,2.39h-7.71l-.47.48c-.44.45-.45.49-.04,1.43h7.64l.47,1.48c.26.81.51,1.69.57,1.93.07.38-.03.55-1.03,1.67-.63.67-1.35,1.47-2.11,2.33h-5.67c-4.44,0-5.67-.04-5.67-.19,0-.1.19-.33.41-.52.22-.17.8-.73,2.21-2.05h7.78s.41-.41.41-.41c.22-.22.41-.52.41-.68-.01-.16-.1-.42-.22-.58-.2-.29-.35-.29-3.9-.26-2.02.03-3.75,0-3.83-.07-.09-.06-.39-.83-.68-1.7-.31-.89-.55-1.69-.57-1.77,0-.1.33-.55.77-1.02.42-.47,1.19-1.29,1.7-1.83l.93-.97h5.73ZM109.75,2.98c.12-.39.22-.81.22-.9,0-.15-.42-.19-1.63-.19h-1.64c-1.69,1.86-2.24,2.47-2.33,2.56-.07.09-.64.71-1.24,1.38s-1.45,1.61-1.89,2.11-.86.92-.95.92c-.07.01-.26-.26-.39-.6-.15-.35-.26-.68-.26-.77.01-.07-.36-1.29-.8-2.69-.45-1.4-.84-2.63-.89-2.72-.04-.13-.52-.19-1.79-.19h-1.73l-.06.41c-.04.22-.31,1.15-.6,2.07-.28.92-.61,2.04-.73,2.47-.13.44-.38,1.35-.58,2.04-.19.68-.52,1.86-.74,2.62s-.57,1.91-.77,2.55c-.19.64-.38,1.34-.42,1.57l-.06.39c1.29-.68,2.07-1.11,2.55-1.37.48-.28.96-.65,1.05-.83.1-.19.38-1.06.63-1.95.25-.87.61-2.15.8-2.84s.44-1.5.55-1.82q.22-.58.38-.22c.07.2.45,1.35.81,2.55.38,1.21.76,2.37.84,2.59.17.38.23.41,1.12.41h.95c1.47-1.56,2.62-2.84,3.49-3.84.89-1,1.66-1.83,1.72-1.83.06-.01.1.09.1.2s-.29,1.25-.65,2.52c-.36,1.25-.74,2.57-.86,2.94s-.25.83-.29,1.06l-.09.39h3.05c.23-.96.36-1.4.44-1.6s.23-.73.35-1.16.45-1.59.73-2.55.71-2.46.95-3.35c.25-.87.55-1.92.67-2.33ZM84.58,2.04c-1.36,0-2.72,0-4.07.01-.42,0-1.17-.11-1.56.07-.63.29-.66,1.47-.85,2.09-.55,1.88-1.11,3.75-1.66,5.63-.41,1.38-.82,2.77-1.2,4.16-.18.65-.35,1.32-.26,1.99.68-.38,1.37-.75,2.05-1.13.48-.26.98-.55,1.28-1,.21-.31.31-.68.41-1.05.21-.8.47-3.15,1.18-3.43.4-.16.61-.09,1.94-.04,1.11.04,2.01-.02,2.59-.07.82-.34,1.76-.86,2.66-1.67.17-.15.33-.31.48-.47-1.89-.07-3.36-.09-4.34-.08-.96,0-2.1.02-2.42-.59-.11-.21-.15-.59-.09-.97.03-.18.1-.43.31-.62.33-.3.81-.22,1.12-.22.77,0,1.53,0,2.3,0,1.14,0,2.27,0,3.41,0,.75-.76,1.58-1.45,2.39-2.15.13-.1.23-.25.23-.32,0-.1-2.07-.15-5.89-.15ZM12.15,11.3c-.04-.06-1.93-.1-4.22-.1s-4.15-.04-4.15-.12c0-.06.16-.63.35-1.27s.57-1.89.81-2.76c.26-.87.58-2.02.74-2.55.15-.52.44-1.53.65-2.25s.41-1.53.44-1.79c.03-.25.01-.47-.06-.47-.06,0-.39.19-.76.41h0c-.36.23-1.08.64-1.59.92-.51.28-.99.63-1.06.79-.06.16-.58,1.89-1.15,3.85-.57,1.96-1.16,4.06-1.32,4.65-.15.6-.41,1.48-.57,1.96-.16.48-.28.99-.28,1.12,0,.25.32.26,4.7.26h4.68c.79-.7,1.43-1.27,1.92-1.72.49-.47.87-.87.84-.95ZM25.16,1.89l1.45,2.76-.31,1.12c-.16.63-.33,1.21-.39,1.28-.04.07-.26.8-.48,1.6s-.64,2.33-1.51,5.31h-1.48c-1.24,0-1.5-.04-1.5-.22,0-.12.09-.49.2-.84.12-.33.31-.97.44-1.41.12-.44.16-.86.12-.92-.06-.06-1.4-.1-5.85-.1l-.2.47c-.12.26-.35,1.03-.51,1.72-.31,1.21-.32,1.25-1.03,1.7-.41.26-.76.48-.8.48s-.49.26-1.02.58c-.67.41-.97.52-1.03.39-.04-.09.12-.83.36-1.63.23-.8.48-1.72.54-2.04.06-.32.17-.74.28-.95.1-.2.28-.76.41-1.24.12-.48.52-1.89,1.54-5.38l.77-.65c.42-.36,1.09-.96,1.5-1.34l.73-.7h7.78ZM23.49,4.65h-6.04l-.31,1.06c-.16.57-.36,1.21-.42,1.41-.07.2-.09.42-.03.48s1.41.1,3.01.1h2.91c.51-1.63.7-2.33.76-2.59l.12-.47ZM44.51,4.35c.12-.16.39-.51.61-.76s.39-.52.39-.6c0-.09.15-.28.31-.44s.31-.38.29-.48c0-.13-.39-.17-1.45-.17h-1.45c-4.68,6.21-6.08,7.96-6.14,7.9-.06-.07-.16-.51-.2-.99l-.1-.87c2.79-3.84,3.75-5.13,3.93-5.35.19-.22.31-.47.26-.54-.04-.09-.7-.15-1.53-.15-1.37,0-1.47.01-1.7.35-.15.19-.52.71-.84,1.16s-.63.81-.68.81c-.07,0-.15-.25-.19-.55s-.13-.8-.19-1.12l-.1-.58c-2.25-.06-2.95-.03-3,.03-.06.06.09,1.43.32,3.03.23,1.6.39,2.98.35,3.08s-.35.54-.68.97c-.35.44-.68.77-.77.76-.07-.03-.29-.96-.47-2.07-.17-1.12-.45-2.85-.61-3.84-.16-1-.31-1.88-.31-1.93s-.68-.1-1.53-.1h-1.53v.36c0,.19.17,1.38.38,2.65.2,1.27.52,3.3.73,4.55.19,1.24.44,2.76.54,3.37l.17,1.13h2.98c.83-1.19,1.21-1.69,1.37-1.86.23-.25.33-.28.41-.15.07.1.12.35.12.55,0,.19.07.6.15.9l.15.55,2.98-.07c3.39-4.54,4.92-6.62,5.6-7.56.68-.93,1.34-1.83,1.45-1.99ZM122.2,1.91l1.48,2.69-.38,1.53c-.22.83-.45,1.63-.54,1.77-.07.15-.26.76-.42,1.38-.15.63-.38,1.35-.48,1.64-.12.28-.63.87-1.13,1.32-.51.46-1.16,1.03-1.95,1.73h-4.33c-3.99,0-4.33-.03-4.39-.26-.04-.15-.31-.64-.58-1.12-.29-.48-.57-1-.61-1.16s.16-1.08.44-2.04.71-2.44.96-3.27c.25-.84.57-1.61.71-1.72.13-.12.54-.47.9-.8.36-.35.93-.86,1.27-1.16l.63-.54h8.44ZM120.49,4.77c-.03-.06-1.57-.1-3.4-.1-2.56,0-3.36.03-3.4.17h0c-.03.1-.22.74-.42,1.43-.22.67-.51,1.72-.67,2.33-.16.6-.38,1.41-.51,1.82-.12.39-.2.73-.19.74.01.03,1.47.04,3.23.04,1.76.01,3.29.01,3.39.01.09,0,.33-.54.52-1.21.2-.65.61-2.08.93-3.16.32-1.09.55-2.02.52-2.08ZM74.99,1.91l1.48,2.69-.38,1.53c-.22.83-.45,1.63-.54,1.77-.07.15-.26.76-.42,1.38-.15.63-.38,1.35-.48,1.64-.12.28-.63.87-1.13,1.32-.51.46-1.16,1.03-1.95,1.73h-4.33c-3.99,0-4.33-.03-4.39-.26-.04-.15-.31-.64-.58-1.12-.29-.48-.57-1-.61-1.16s.16-1.08.44-2.04.71-2.44.96-3.27c.25-.84.57-1.61.71-1.72.13-.12.54-.47.9-.8.36-.35.93-.86,1.27-1.16l.63-.54h8.44ZM73.29,4.77c-.03-.06-1.57-.1-3.4-.1-2.56,0-3.36.03-3.4.17h0c-.03.1-.22.74-.42,1.43-.22.67-.51,1.72-.67,2.33-.16.6-.38,1.41-.51,1.82-.12.39-.2.73-.19.74.01.03,1.47.04,3.23.04,1.76.01,3.29.01,3.39.01.09,0,.33-.54.52-1.21.2-.65.61-2.08.93-3.16.32-1.09.55-2.02.52-2.08ZM140.35,3.05c.16-.52.25-.99.19-1.06-.06-.06-.74-.1-1.51-.1s-1.43.01-1.43.04h0s-.13.49-.29,1.05c-.17.57-.42,1.44-.57,1.96-.16.52-.47,1.63-.71,2.47-.23.84-.68,2.34-.97,3.35-.31,1-.73,2.47-.96,3.27-.22.8-.41,1.54-.41,1.64-.01.09.06.17.13.17.09,0,.86-.41,1.72-.89.86-.49,1.57-.9,1.59-.92.01,0,.29-.93.63-2.05.32-1.12.65-2.23.74-2.47.09-.23.35-1.12.58-1.96.25-.84.57-1.98.71-2.55.16-.55.41-1.44.57-1.96ZM152.95,9.31c-.29,1.08-.58,1.99-.65,2.04-.06.04-.67.6-1.37,1.24-.7.64-1.37,1.21-1.48,1.28-.1.06-2.11.09-8.71.03l-1.38-2.69.45-1.48c.25-.83.6-2.02.79-2.66s.41-1.43.49-1.75c.1-.41.38-.8.93-1.31.42-.39,1.11-1.03,1.53-1.41l.74-.7h8.45l.35.55c.19.29.54.93.79,1.41.35.7.41.95.29,1.24-.07.2-.25.79-.39,1.31s-.51,1.83-.81,2.91ZM151.13,4.74s-1.54-.07-3.42-.07h-3.4l-.16.61c-.09.33-.32,1.21-.54,1.93-.2.71-.52,1.83-.71,2.47s-.35,1.24-.35,1.34c0,.15.77.19,3.35.19h3.35c.25-.63.51-1.5.74-2.33.23-.84.6-2.11.79-2.81.2-.7.36-1.31.36-1.34ZM167.55,1.89h-1.5c-.38,1.19-.68,2.25-.95,3.14-.25.87-.55,1.89-.65,2.25-.12.35-.26.84-.33,1.09-.07.23-.19.45-.26.47-.07.01-.95-1.12-1.95-2.53s-2.11-2.98-2.47-3.49l-.65-.93h-2.21s-.32,1.13-.32,1.13c-.19.63-.51,1.75-.74,2.52-.23.76-.63,2.09-.87,2.98-.25.87-.55,1.95-.68,2.4-.12.44-.33,1.15-.47,1.6-.15.44-.41,1.34-.61,1.99-.19.65-.29,1.24-.23,1.31.06.06.32,0,.58-.15.26-.13.86-.48,1.34-.77.48-.28,1.03-.58,1.21-.68.25-.13.42-.47.63-1.19.17-.57.45-1.54.64-2.18s.48-1.66.65-2.25c.17-.61.35-1.18.38-1.28s.12-.17.17-.17.19.15.31.32c.12.17.99,1.44,1.95,2.81.96,1.35,1.95,2.75,2.2,3.08l.45.61c1.86,0,2.43-.04,2.47-.1.03-.06.16-.47.28-.9.12-.45.55-1.95.97-3.35.41-1.41.87-3.01,1.03-3.56.16-.57.44-1.59.61-2.25.19-.68.38-1.4.44-1.57.09-.32.07-.32-1.4-.33ZM123.49,1.96h0s0,0,0,0ZM136.12,2.65c.26-.22.48-.48.48-.57-.01-.15-1.43-.19-6.56-.19-3.59,0-6.55.03-6.55.07,0,.04.31.67.65,1.38l.65,1.31h2.91c-.13.73-.23,1.15-.31,1.38-.07.25-.44,1.48-.8,2.76s-.84,2.98-1.08,3.78c-.22.8-.49,1.82-.63,2.25s-.19.86-.13.93c.06.06.51-.12,1.02-.41.49-.29.95-.52.97-.52.04,0,.35-.17.7-.39.33-.22.65-.42.68-.45.04-.03.22-.57.39-1.18.17-.61.61-2.15.99-3.43.38-1.28.83-2.87,1.03-3.52l.35-1.21h2.98c1.35-1.25,1.96-1.79,2.23-2.01Z"
+                />
+              </svg>
+            </a>
+          </div>
+          <!-- Nav Links -->
+          <div class="hidden md:w-auto lg:block" id="navbar-default">
+            <ul
+              class="absolute left-1/2 top-[4.2rem] float-start flex h-fit w-full -translate-x-1/2 transform flex-col items-center justify-center rounded-lg bg-neutral-100 p-5 text-sm font-semibold tracking-wide text-neutral-400 shadow dark:bg-neutral-900 lg:static lg:left-0 lg:translate-x-0 lg:flex-row lg:space-x-4 lg:bg-transparent lg:p-0 lg:shadow-none lg:dark:bg-transparent xl:space-x-7"
+            >
+              <li
+                class="mx-3 w-full cursor-pointer rounded-lg hover:bg-gray-200 hover:text-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-100 lg:mx-0 lg:w-fit lg:rounded-none lg:hover:bg-transparent lg:hover:text-neutral-950 lg:dark:hover:bg-transparent lg:dark:hover:text-neutral-100"
+              >
+                <a href="./index.html" class="block p-3 lg:p-0">HOME</a>
+              </li>
+              <li
+                class="mx-3 w-full cursor-pointer rounded-lg hover:bg-gray-200 hover:text-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-100 lg:mx-0 lg:w-fit lg:rounded-none lg:hover:bg-transparent lg:hover:text-neutral-950 lg:dark:hover:bg-transparent lg:dark:hover:text-neutral-100"
+              >
+                <a class="block p-3 lg:p-0" href="./about.html">ABOUT</a>
+              </li>
+              <li
+                class="group mx-3 w-full cursor-pointer rounded-lg p-3 hover:bg-gray-200 hover:text-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-100 lg:mx-0 lg:w-fit lg:rounded-none lg:p-0 lg:hover:bg-transparent lg:hover:text-neutral-950 lg:dark:hover:bg-transparent lg:dark:hover:text-neutral-100"
+              >
+                <button
+                  id="dropdownNavbarLink"
+                  data-dropdown-toggle="dropdownNavbar"
+                  class="flex w-full items-center justify-start"
+                >
+                  PROGRAMS
+                  <svg
+                    class="ml-1 w-4 fill-neutral-400 group-hover:fill-neutral-950 dark:group-hover:fill-neutral-100"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z"
+                    />
+                  </svg>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div
+                  id="dropdownNavbar"
+                  class="z-10 hidden w-auto rounded-lg bg-neutral-100 font-medium shadow dark:bg-neutral-800"
+                >
+                  <ul
+                    class="py-2 text-sm text-neutral-400"
+                    aria-labelledby="dropdownLargeButton"
+                  >
+                    <li>
+                      <a
+                        href="./trampoline.html"
+                        class="block px-4 py-2 hover:bg-red-500 hover:text-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white"
+                        >Trampoline / Tumbling</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="./acrobatics.html"
+                        class="block px-4 py-2 hover:bg-red-500 hover:text-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white"
+                        >Acrobatics for Dance</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="./gymnastics.html"
+                        class="block px-4 py-2 hover:bg-red-500 hover:text-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white"
+                        >Urban Gymnastics (Parkour)</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="./tricking.html"
+                        class="block px-4 py-2 hover:bg-red-500 hover:text-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white"
+                        >Tricking</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="./opengym.html"
+                        class="block px-4 py-2 hover:bg-red-500 hover:text-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white"
+                        >Open Gym</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="./kinstretch.html"
+                        class="block px-4 py-2 hover:bg-red-500 hover:text-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white"
+                        >Kinstretch</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="./summercamp.html"
+                        class="block px-4 py-2 hover:bg-red-500 hover:text-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white"
+                        >Summer Camp</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li
+                class="mx-3 w-full cursor-pointer rounded-lg hover:bg-gray-200 hover:text-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-100 lg:mx-0 lg:w-fit lg:rounded-none lg:hover:bg-transparent lg:hover:text-neutral-950 lg:dark:hover:bg-transparent lg:dark:hover:text-neutral-100"
+              >
+                <a href="./schedules.html" class="block p-3 lg:p-0"
+                  >SCHEDULES / PRICES</a
+                >
+              </li>
+              <li
+                class="mx-3 w-full cursor-pointer rounded-lg hover:bg-gray-200 hover:text-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-100 lg:mx-0 lg:w-fit lg:rounded-none lg:hover:bg-transparent lg:hover:text-neutral-950 lg:dark:hover:bg-transparent lg:dark:hover:text-neutral-100"
+              >
+                <a href="./contact.html" class="block p-3 lg:p-0">CONTACT</a>
+              </li>
+              <li
+                class="mx-3 w-full cursor-pointer rounded-lg hover:bg-gray-200 hover:text-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-100 lg:mx-0 lg:w-fit lg:hover:bg-transparent lg:hover:text-neutral-950 lg:dark:hover:bg-transparent lg:dark:hover:text-neutral-100"
+              >
+                <a href="./faqs.html" class="block p-3 lg:p-0">FAQS</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Button Group -->
+          <div class="flex">
+            
+            <!-- Dark Mode Toggle -->
+            <button
+              id="theme-toggle"
+              type="button"
+              class="group h-9 w-9 min-w-9 rounded-lg border border-solid border-neutral-400 p-1.5 transition duration-300 ease-out hover:bg-neutral-950 dark:border-neutral-400 dark:hover:bg-neutral-100"
+            >
+              <div
+                id="theme-toggle-icon"
+                class="transform transition-all delay-150 duration-300"
+              >
+                <svg
+                  class="fill-neutral-950 group-hover:fill-neutral-100 dark:fill-neutral-100 dark:group-hover:fill-neutral-900"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z M12,20.5 L12,3.5 C16.6944204,3.5 20.5,7.30557963 20.5,12 C20.5,16.6944204 16.6944204,20.5 12,20.5 Z"
+                  />
+                </svg>
+              </div>
+            </button>
+            <!-- Nav Links Collapse Toggle -->
+            <button
+              id="navbar-toggle-btn"
+              data-collapse-toggle="navbar-default"
+              type="button"
+              class="group ml-3 flex h-9 w-9 min-w-9 items-center justify-center rounded-lg border border-solid border-neutral-400 transition ease-out hover:bg-neutral-950 dark:hover:bg-neutral-100 lg:hidden"
+              aria-controls="navbar-default"
+              aria-expanded="false"
+            >
+              <div
+                class="flex h-[18px] w-[18px] origin-center transform flex-col justify-around overflow-hidden transition-transform duration-300"
+              >
+                <span
+                  id="navbar-hamburger-icon-1"
+                  class="w-fill h-[2px] origin-left transform rounded-full bg-neutral-950 transition-transform duration-300 group-hover:bg-neutral-100 dark:bg-neutral-100 dark:group-hover:bg-neutral-950"
+                ></span>
+                <span
+                  id="navbar-hamburger-icon-2"
+                  class="w-fill h-[2px] transform rounded-full bg-neutral-950 transition-transform delay-75 duration-300 group-hover:bg-neutral-100 dark:bg-neutral-100 dark:group-hover:bg-neutral-950"
+                ></span>
+                <span
+                  id="navbar-hamburger-icon-3"
+                  class="w-fill h-[2px] origin-left transform rounded-full bg-neutral-950 transition-transform delay-150 duration-300 group-hover:bg-neutral-100 dark:bg-neutral-100 dark:group-hover:bg-neutral-950"
+                ></span>
+                <div
+                  id="navbar-close-icon-1"
+                  class="absolute flex -translate-x-10 transform items-center justify-between transition-transform duration-500"
+                >
+                  <span
+                    id="navbar-close-icon-2"
+                    class="absolute h-[2px] w-[19px] rotate-0 transform rounded-full bg-neutral-950 transition-transform delay-300 duration-500 group-hover:bg-neutral-100 dark:bg-neutral-100 dark:group-hover:bg-neutral-950"
+                  ></span>
+                  <span
+                    id="navbar-close-icon-3"
+                    class="absolute h-[2px] w-[19px] -rotate-0 transform rounded-full bg-neutral-950 transition-transform delay-300 duration-500 group-hover:bg-neutral-100 dark:bg-neutral-100 dark:group-hover:bg-neutral-950"
+                  ></span>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Video -->
+    <video
+      src="./assets/videos/Laws_of_Motion new_Ottawa_location_2020.mp4"
+      autoplay
+      loop
+      muted
+      class="fixed bottom-0 left-0 right-0 top-0 -z-10 h-[100vh] w-[100vw] object-cover"
+    ></video>
+
+    <!-- Join Our Club -->
+    <section
+      class="flex h-full w-full items-end justify-center px-3 pb-3 lg:px-10"
+    >
+      <div class="grid w-full grid-cols-1 gap-3 sm:gap-[1vw] md:grid-cols-3">
+        <!-- Button 1 -->
+        <a
+          href="https://www.amilia.com/store/en/laws-of-motion/shop/programs"
+          target="_blank"
+          class="group relative flex h-14 w-full items-center justify-center rounded-lg bg-neutral-100 font-Poppins text-lg font-semibold tracking-widest text-neutral-950 transition-transform hover:scale-[1.02] hover:bg-red-500 hover:text-neutral-100 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-red-500 sm:text-xs lg:text-base"
+        >
+          <p>REGISTER</p>
+        </a>
+        <!-- Button 2 -->
+
+        <a
+          href="https://waiver.smartwaiver.com/w/5dfbe2c76477b/web/"
+          target="_blank"
+          class="group relative flex h-14 w-full items-center justify-center rounded-lg bg-neutral-100 font-Poppins text-lg font-semibold tracking-widest text-neutral-950 transition-transform hover:scale-[1.02] hover:bg-emerald-500 hover:text-neutral-100 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-emerald-500 sm:text-xs lg:text-base"
+        >
+          <p>ONLINE WAIVER</p>
+        </a>
+        <!-- Button 3 -->
+        <a
+          href="./schedules.html"
+          class="group relative flex h-14 w-full items-center justify-center rounded-lg bg-neutral-100 font-Poppins text-lg font-semibold tracking-widest text-neutral-950 transition-transform hover:scale-[1.02] hover:bg-purple-500 hover:text-neutral-100 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-purple-500 sm:text-xs lg:text-base"
+        >
+          <p>SCHEDULES / PRICES</p>
+        </a>
+      </div>
+    </section>
+
+    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="./scripts/main.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

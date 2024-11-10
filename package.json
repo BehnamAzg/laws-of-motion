@@ -1,0 +1,27 @@
+{
+  "name": "laws-of-motion",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon ./src/scripts/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "prettier": "3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "tailwind-scrollbar": "^3.1.0",
+    "tailwindcss": "^3.4.3"
+  },
+  "dependencies": {
+    "express": "^4.21.1",
+    "flowbite": "^2.3.0",
+    "micro-slider": "^1.1.0",
+    "mongodb": "^6.10.0",
+    "nodemon": "^3.1.7"
+  }
+
+}

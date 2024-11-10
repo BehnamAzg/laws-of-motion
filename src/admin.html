@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laws of Motion - Admin Panel</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./assets/icons/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./output.css" rel="stylesheet" />
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+
+    <script>
+      // Initialize Firebase with your project's config
+      var firebaseConfig = {
+        apiKey: "AIzaSyDOXa1AyMLIZLUD4UH_FAvYIAS9yF6J0w0",
+        authDomain: "laws-of-motion-ottawa.firebaseapp.com",
+        projectId: "laws-of-motion-ottawa",
+        storageBucket: "laws-of-motion-ottawa.appspot.com",
+        messagingSenderId: "295960880505",
+        appId: "1:295960880505:web:8276bb35eaa756d8eebba8",
+        measurementId: "G-W3KMWDR3F0",
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      // Function to check if a user is logged in or not
+      function checkAuthState() {
+        firebase.auth().onAuthStateChanged(function (user) {
+          if (!user) {
+            // User is not signed in, redirect to the login page
+            window.location.href = "login.html";
+          }
+        });
+      }
+    </script>
+  </head>
+  <body onload="checkAuthState()" class="bg-neutral-200 dark:bg-neutral-950">
+    <!-- navbar -->
+    <nav
+      class="fixed top-0 z-50 w-full border-b border-white bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900"
+    >
+      <div class="px-5 py-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center justify-start rtl:justify-end">
+            <button
+              data-drawer-target="logo-sidebar"
+              data-drawer-toggle="logo-sidebar"
+              aria-controls="logo-sidebar"
+              type="button"
+              class="mr-3 inline-flex h-9 w-9 min-w-9 items-center rounded-lg border border-solid border-neutral-400 p-1.5 text-sm text-neutral-950 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:border-neutral-400 dark:text-neutral-100 dark:hover:bg-gray-700 dark:focus:ring-gray-600 sm:hidden"
+            >
+              <span class="sr-only">Open sidebar</span>
+              <svg
+                class="h-6 w-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                ></path>
+              </svg>
+            </button>
+
+            <!-- Logo -->
+            <div class="float-start flex h-full items-center justify-center">
+              <a href="https://www.lomtumbling.ca">
+                <svg
+                  class="w-40 fill-neutral-950 transition-transform ease-out hover:scale-95 hover:fill-red-500 dark:fill-neutral-100 dark:hover:fill-red-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 168.97 16"
+                >
+                  <path
+                    class="cls-1"
+                    d="M53.63,1.91c3.14,0,5.72.01,5.72.03.01.01-.1.17-.25.33-.15.16-.79.76-2.59,2.39h-7.71l-.47.48c-.44.45-.45.49-.04,1.43h7.64l.47,1.48c.26.81.51,1.69.57,1.93.07.38-.03.55-1.03,1.67-.63.67-1.35,1.47-2.11,2.33h-5.67c-4.44,0-5.67-.04-5.67-.19,0-.1.19-.33.41-.52.22-.17.8-.73,2.21-2.05h7.78s.41-.41.41-.41c.22-.22.41-.52.41-.68-.01-.16-.1-.42-.22-.58-.2-.29-.35-.29-3.9-.26-2.02.03-3.75,0-3.83-.07-.09-.06-.39-.83-.68-1.7-.31-.89-.55-1.69-.57-1.77,0-.1.33-.55.77-1.02.42-.47,1.19-1.29,1.7-1.83l.93-.97h5.73ZM109.75,2.98c.12-.39.22-.81.22-.9,0-.15-.42-.19-1.63-.19h-1.64c-1.69,1.86-2.24,2.47-2.33,2.56-.07.09-.64.71-1.24,1.38s-1.45,1.61-1.89,2.11-.86.92-.95.92c-.07.01-.26-.26-.39-.6-.15-.35-.26-.68-.26-.77.01-.07-.36-1.29-.8-2.69-.45-1.4-.84-2.63-.89-2.72-.04-.13-.52-.19-1.79-.19h-1.73l-.06.41c-.04.22-.31,1.15-.6,2.07-.28.92-.61,2.04-.73,2.47-.13.44-.38,1.35-.58,2.04-.19.68-.52,1.86-.74,2.62s-.57,1.91-.77,2.55c-.19.64-.38,1.34-.42,1.57l-.06.39c1.29-.68,2.07-1.11,2.55-1.37.48-.28.96-.65,1.05-.83.1-.19.38-1.06.63-1.95.25-.87.61-2.15.8-2.84s.44-1.5.55-1.82q.22-.58.38-.22c.07.2.45,1.35.81,2.55.38,1.21.76,2.37.84,2.59.17.38.23.41,1.12.41h.95c1.47-1.56,2.62-2.84,3.49-3.84.89-1,1.66-1.83,1.72-1.83.06-.01.1.09.1.2s-.29,1.25-.65,2.52c-.36,1.25-.74,2.57-.86,2.94s-.25.83-.29,1.06l-.09.39h3.05c.23-.96.36-1.4.44-1.6s.23-.73.35-1.16.45-1.59.73-2.55.71-2.46.95-3.35c.25-.87.55-1.92.67-2.33ZM84.58,2.04c-1.36,0-2.72,0-4.07.01-.42,0-1.17-.11-1.56.07-.63.29-.66,1.47-.85,2.09-.55,1.88-1.11,3.75-1.66,5.63-.41,1.38-.82,2.77-1.2,4.16-.18.65-.35,1.32-.26,1.99.68-.38,1.37-.75,2.05-1.13.48-.26.98-.55,1.28-1,.21-.31.31-.68.41-1.05.21-.8.47-3.15,1.18-3.43.4-.16.61-.09,1.94-.04,1.11.04,2.01-.02,2.59-.07.82-.34,1.76-.86,2.66-1.67.17-.15.33-.31.48-.47-1.89-.07-3.36-.09-4.34-.08-.96,0-2.1.02-2.42-.59-.11-.21-.15-.59-.09-.97.03-.18.1-.43.31-.62.33-.3.81-.22,1.12-.22.77,0,1.53,0,2.3,0,1.14,0,2.27,0,3.41,0,.75-.76,1.58-1.45,2.39-2.15.13-.1.23-.25.23-.32,0-.1-2.07-.15-5.89-.15ZM12.15,11.3c-.04-.06-1.93-.1-4.22-.1s-4.15-.04-4.15-.12c0-.06.16-.63.35-1.27s.57-1.89.81-2.76c.26-.87.58-2.02.74-2.55.15-.52.44-1.53.65-2.25s.41-1.53.44-1.79c.03-.25.01-.47-.06-.47-.06,0-.39.19-.76.41h0c-.36.23-1.08.64-1.59.92-.51.28-.99.63-1.06.79-.06.16-.58,1.89-1.15,3.85-.57,1.96-1.16,4.06-1.32,4.65-.15.6-.41,1.48-.57,1.96-.16.48-.28.99-.28,1.12,0,.25.32.26,4.7.26h4.68c.79-.7,1.43-1.27,1.92-1.72.49-.47.87-.87.84-.95ZM25.16,1.89l1.45,2.76-.31,1.12c-.16.63-.33,1.21-.39,1.28-.04.07-.26.8-.48,1.6s-.64,2.33-1.51,5.31h-1.48c-1.24,0-1.5-.04-1.5-.22,0-.12.09-.49.2-.84.12-.33.31-.97.44-1.41.12-.44.16-.86.12-.92-.06-.06-1.4-.1-5.85-.1l-.2.47c-.12.26-.35,1.03-.51,1.72-.31,1.21-.32,1.25-1.03,1.7-.41.26-.76.48-.8.48s-.49.26-1.02.58c-.67.41-.97.52-1.03.39-.04-.09.12-.83.36-1.63.23-.8.48-1.72.54-2.04.06-.32.17-.74.28-.95.1-.2.28-.76.41-1.24.12-.48.52-1.89,1.54-5.38l.77-.65c.42-.36,1.09-.96,1.5-1.34l.73-.7h7.78ZM23.49,4.65h-6.04l-.31,1.06c-.16.57-.36,1.21-.42,1.41-.07.2-.09.42-.03.48s1.41.1,3.01.1h2.91c.51-1.63.7-2.33.76-2.59l.12-.47ZM44.51,4.35c.12-.16.39-.51.61-.76s.39-.52.39-.6c0-.09.15-.28.31-.44s.31-.38.29-.48c0-.13-.39-.17-1.45-.17h-1.45c-4.68,6.21-6.08,7.96-6.14,7.9-.06-.07-.16-.51-.2-.99l-.1-.87c2.79-3.84,3.75-5.13,3.93-5.35.19-.22.31-.47.26-.54-.04-.09-.7-.15-1.53-.15-1.37,0-1.47.01-1.7.35-.15.19-.52.71-.84,1.16s-.63.81-.68.81c-.07,0-.15-.25-.19-.55s-.13-.8-.19-1.12l-.1-.58c-2.25-.06-2.95-.03-3,.03-.06.06.09,1.43.32,3.03.23,1.6.39,2.98.35,3.08s-.35.54-.68.97c-.35.44-.68.77-.77.76-.07-.03-.29-.96-.47-2.07-.17-1.12-.45-2.85-.61-3.84-.16-1-.31-1.88-.31-1.93s-.68-.1-1.53-.1h-1.53v.36c0,.19.17,1.38.38,2.65.2,1.27.52,3.3.73,4.55.19,1.24.44,2.76.54,3.37l.17,1.13h2.98c.83-1.19,1.21-1.69,1.37-1.86.23-.25.33-.28.41-.15.07.1.12.35.12.55,0,.19.07.6.15.9l.15.55,2.98-.07c3.39-4.54,4.92-6.62,5.6-7.56.68-.93,1.34-1.83,1.45-1.99ZM122.2,1.91l1.48,2.69-.38,1.53c-.22.83-.45,1.63-.54,1.77-.07.15-.26.76-.42,1.38-.15.63-.38,1.35-.48,1.64-.12.28-.63.87-1.13,1.32-.51.46-1.16,1.03-1.95,1.73h-4.33c-3.99,0-4.33-.03-4.39-.26-.04-.15-.31-.64-.58-1.12-.29-.48-.57-1-.61-1.16s.16-1.08.44-2.04.71-2.44.96-3.27c.25-.84.57-1.61.71-1.72.13-.12.54-.47.9-.8.36-.35.93-.86,1.27-1.16l.63-.54h8.44ZM120.49,4.77c-.03-.06-1.57-.1-3.4-.1-2.56,0-3.36.03-3.4.17h0c-.03.1-.22.74-.42,1.43-.22.67-.51,1.72-.67,2.33-.16.6-.38,1.41-.51,1.82-.12.39-.2.73-.19.74.01.03,1.47.04,3.23.04,1.76.01,3.29.01,3.39.01.09,0,.33-.54.52-1.21.2-.65.61-2.08.93-3.16.32-1.09.55-2.02.52-2.08ZM74.99,1.91l1.48,2.69-.38,1.53c-.22.83-.45,1.63-.54,1.77-.07.15-.26.76-.42,1.38-.15.63-.38,1.35-.48,1.64-.12.28-.63.87-1.13,1.32-.51.46-1.16,1.03-1.95,1.73h-4.33c-3.99,0-4.33-.03-4.39-.26-.04-.15-.31-.64-.58-1.12-.29-.48-.57-1-.61-1.16s.16-1.08.44-2.04.71-2.44.96-3.27c.25-.84.57-1.61.71-1.72.13-.12.54-.47.9-.8.36-.35.93-.86,1.27-1.16l.63-.54h8.44ZM73.29,4.77c-.03-.06-1.57-.1-3.4-.1-2.56,0-3.36.03-3.4.17h0c-.03.1-.22.74-.42,1.43-.22.67-.51,1.72-.67,2.33-.16.6-.38,1.41-.51,1.82-.12.39-.2.73-.19.74.01.03,1.47.04,3.23.04,1.76.01,3.29.01,3.39.01.09,0,.33-.54.52-1.21.2-.65.61-2.08.93-3.16.32-1.09.55-2.02.52-2.08ZM140.35,3.05c.16-.52.25-.99.19-1.06-.06-.06-.74-.1-1.51-.1s-1.43.01-1.43.04h0s-.13.49-.29,1.05c-.17.57-.42,1.44-.57,1.96-.16.52-.47,1.63-.71,2.47-.23.84-.68,2.34-.97,3.35-.31,1-.73,2.47-.96,3.27-.22.8-.41,1.54-.41,1.64-.01.09.06.17.13.17.09,0,.86-.41,1.72-.89.86-.49,1.57-.9,1.59-.92.01,0,.29-.93.63-2.05.32-1.12.65-2.23.74-2.47.09-.23.35-1.12.58-1.96.25-.84.57-1.98.71-2.55.16-.55.41-1.44.57-1.96ZM152.95,9.31c-.29,1.08-.58,1.99-.65,2.04-.06.04-.67.6-1.37,1.24-.7.64-1.37,1.21-1.48,1.28-.1.06-2.11.09-8.71.03l-1.38-2.69.45-1.48c.25-.83.6-2.02.79-2.66s.41-1.43.49-1.75c.1-.41.38-.8.93-1.31.42-.39,1.11-1.03,1.53-1.41l.74-.7h8.45l.35.55c.19.29.54.93.79,1.41.35.7.41.95.29,1.24-.07.2-.25.79-.39,1.31s-.51,1.83-.81,2.91ZM151.13,4.74s-1.54-.07-3.42-.07h-3.4l-.16.61c-.09.33-.32,1.21-.54,1.93-.2.71-.52,1.83-.71,2.47s-.35,1.24-.35,1.34c0,.15.77.19,3.35.19h3.35c.25-.63.51-1.5.74-2.33.23-.84.6-2.11.79-2.81.2-.7.36-1.31.36-1.34ZM167.55,1.89h-1.5c-.38,1.19-.68,2.25-.95,3.14-.25.87-.55,1.89-.65,2.25-.12.35-.26.84-.33,1.09-.07.23-.19.45-.26.47-.07.01-.95-1.12-1.95-2.53s-2.11-2.98-2.47-3.49l-.65-.93h-2.21s-.32,1.13-.32,1.13c-.19.63-.51,1.75-.74,2.52-.23.76-.63,2.09-.87,2.98-.25.87-.55,1.95-.68,2.4-.12.44-.33,1.15-.47,1.6-.15.44-.41,1.34-.61,1.99-.19.65-.29,1.24-.23,1.31.06.06.32,0,.58-.15.26-.13.86-.48,1.34-.77.48-.28,1.03-.58,1.21-.68.25-.13.42-.47.63-1.19.17-.57.45-1.54.64-2.18s.48-1.66.65-2.25c.17-.61.35-1.18.38-1.28s.12-.17.17-.17.19.15.31.32c.12.17.99,1.44,1.95,2.81.96,1.35,1.95,2.75,2.2,3.08l.45.61c1.86,0,2.43-.04,2.47-.1.03-.06.16-.47.28-.9.12-.45.55-1.95.97-3.35.41-1.41.87-3.01,1.03-3.56.16-.57.44-1.59.61-2.25.19-.68.38-1.4.44-1.57.09-.32.07-.32-1.4-.33ZM123.49,1.96h0s0,0,0,0ZM136.12,2.65c.26-.22.48-.48.48-.57-.01-.15-1.43-.19-6.56-.19-3.59,0-6.55.03-6.55.07,0,.04.31.67.65,1.38l.65,1.31h2.91c-.13.73-.23,1.15-.31,1.38-.07.25-.44,1.48-.8,2.76s-.84,2.98-1.08,3.78c-.22.8-.49,1.82-.63,2.25s-.19.86-.13.93c.06.06.51-.12,1.02-.41.49-.29.95-.52.97-.52.04,0,.35-.17.7-.39.33-.22.65-.42.68-.45.04-.03.22-.57.39-1.18.17-.61.61-2.15.99-3.43.38-1.28.83-2.87,1.03-3.52l.35-1.21h2.98c1.35-1.25,1.96-1.79,2.23-2.01Z"
+                  />
+                </svg>
+              </a>
+            </div>
+            <div
+              class="ml-2 self-center whitespace-nowrap font-sans text-sm font-semibold text-neutral-950 dark:text-neutral-100"
+            >
+              Admin Panel
+            </div>
+          </div>
+
+          <div class="flex items-center">
+            <div class="ms-3 flex items-center">
+              <div>
+                <!-- Dark Mode Toggle -->
+                <button
+                  id="theme-toggle"
+                  type="button"
+                  class="group h-9 w-9 min-w-9 rounded-lg border border-solid border-neutral-400 p-1.5 transition duration-300 ease-out hover:bg-neutral-950 dark:border-neutral-400 dark:hover:bg-neutral-100"
+                >
+                  <div
+                    id="theme-toggle-icon"
+                    class="transform transition-all delay-150 duration-300"
+                  >
+                    <svg
+                      class="fill-neutral-950 group-hover:fill-neutral-100 dark:fill-neutral-100 dark:group-hover:fill-neutral-900"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z M12,20.5 L12,3.5 C16.6944204,3.5 20.5,7.30557963 20.5,12 C20.5,16.6944204 16.6944204,20.5 12,20.5 Z"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+
+              <!-- Profile dropdown -->
+              <div
+                class="z-50 my-4 hidden list-none divide-y divide-neutral-200 rounded-lg bg-white text-base shadow dark:divide-neutral-600 dark:bg-neutral-700"
+                id="dropdown-user"
+              >
+                <div class="px-4 py-3" role="none">
+                  <p
+                    class="mb-1 text-sm font-medium text-neutral-950 dark:text-neutral-100"
+                    role="none"
+                  >
+                    username
+                  </p>
+                  <p
+                    class="truncate text-xs font-medium text-neutral-500 dark:text-neutral-400"
+                    role="none"
+                  >
+                    registration@lomtumbling.com
+                  </p>
+                </div>
+                <ul class="px-1 py-1" role="none">
+                  <li>
+                    <button
+                      type="button"
+                      data-modal-target="crypto-modal"
+                      data-modal-toggle="crypto-modal"
+                      class="group flex w-full items-center justify-normal rounded-lg px-2.5 py-2 text-sm font-medium text-neutral-950 hover:bg-neutral-200 dark:text-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-neutral-100"
+                      role="menuitem"
+                    >
+                      <svg
+                        class="h-4 w-4 flex-shrink-0 text-neutral-500 transition duration-75 group-hover:text-neutral-950 dark:text-neutral-400 dark:group-hover:text-neutral-100"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"
+                        ></path>
+                      </svg>
+                      <span class="ms-2 whitespace-nowrap"
+                        >Account Settings</span
+                      >
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- sidebar -->
+    <aside
+      id="logo-sidebar"
+      class="fixed left-0 top-0 z-40 flex h-screen w-auto -translate-x-full flex-col border-r border-white bg-neutral-100 pt-[4.2rem] transition-transform dark:border-neutral-700 dark:bg-neutral-800 sm:translate-x-0"
+      aria-label="Sidebar"
+    >
+      <div class="h-auto overflow-y-auto px-3 pb-4">
+        <ul
+          class="space-y-2 border-b border-gray-200 pb-2 text-sm font-medium dark:border-gray-700"
+        >
+          <li>
+            <button
+              type="button"
+              aria-expanded="false"
+              data-dropdown-toggle="dropdown-user"
+              class="group flex w-full items-center justify-normal rounded-lg p-2 text-neutral-950 transition duration-75 hover:bg-neutral-200 dark:text-neutral-100 dark:hover:bg-neutral-600"
+            >
+              <span class="sr-only">Open user menu</span>
+              <svg
+                class="h-5 w-5 flex-shrink-0 text-neutral-500 transition duration-75 group-hover:text-neutral-950 dark:text-neutral-400 dark:group-hover:text-neutral-100"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"
+                ></path>
+              </svg>
+
+              <span class="ms-3 whitespace-nowrap">username</span>
+              <span
+                class="ml-auto inline-flex items-center justify-center rounded-full text-sm font-medium text-gray-800 dark:text-gray-300"
+              >
+                <svg
+                  class="h-4 w-4 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                  ></path>
+                </svg>
+              </span>
+            </button>
+          </li>
+        </ul>
+
+        <ul
+          class="space-y-2 pt-2 text-sm font-medium"
+          id="default-styled-tab "
+          data-tabs-toggle="#default-styled-tab-content"
+          data-tabs-active-classes="bg-neutral-200 dark:hover:bg-neutral-600 hover:bg-neutral-300 dark:bg-neutral-700"
+          data-tabs-inactive-classes=""
+          role="tablist"
+        >
+          <li role="presentation">
+            <button
+              class="group flex w-full items-center rounded-lg p-2 text-neutral-950 hover:bg-neutral-200 hover:text-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-700 dark:hover:text-neutral-100"
+              id="home-styled-tab"
+              data-tabs-target="#styled-home"
+              type="button"
+              role="tab"
+              aria-controls="home"
+              aria-selected="false"
+            >
+              <svg
+                class="h-5 w-5 flex-shrink-0 text-neutral-500 transition duration-75 group-hover:text-neutral-950 dark:text-neutral-400 dark:group-hover:text-neutral-100"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M224,120v96a8,8,0,0,1-8,8H160a8,8,0,0,1-8-8V164a4,4,0,0,0-4-4H108a4,4,0,0,0-4,4v52a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V120a16,16,0,0,1,4.69-11.31l80-80a16,16,0,0,1,22.62,0l80,80A16,16,0,0,1,224,120Z"
+                ></path>
+              </svg>
+              <span class="ms-3 whitespace-nowrap">Home</span>
+            </button>
+          </li>
+
+          <li role="presentation">
+            <button
+              class="group flex w-full items-center rounded-lg p-2 text-neutral-950 hover:bg-neutral-200 hover:text-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-700 dark:hover:text-neutral-100"
+              id="schedules-styled-tab"
+              data-tabs-target="#styled-schedules"
+              type="button"
+              role="tab"
+              aria-controls="schedules"
+              aria-selected="false"
+            >
+              <svg
+                class="h-5 w-5 flex-shrink-0 text-neutral-500 transition duration-75 group-hover:text-neutral-950 dark:text-neutral-400 dark:group-hover:text-neutral-100"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM40,112H80v32H40Zm56,0H216v32H96ZM40,160H80v32H40Zm176,32H96V160H216v32Z"
+                ></path>
+              </svg>
+              <span class="ms-3 whitespace-nowrap">Edit Schedules</span>
+            </button>
+          </li>
+
+          <li role="presentation">
+            <button
+              class="group flex w-full items-center rounded-lg p-2 text-neutral-950 hover:bg-neutral-200 hover:text-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-700 dark:hover:text-neutral-100"
+              data-tabs-target="#styled-help"
+              type="button"
+              role="tab"
+              aria-controls="help"
+              aria-selected="false"
+            >
+              <svg
+                class="h-5 w-5 flex-shrink-0 text-neutral-500 transition duration-75 group-hover:text-neutral-950 dark:text-neutral-400 dark:group-hover:text-neutral-100"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM96,128a32,32,0,1,1,32,32A32,32,0,0,1,96,128Zm88.28-67.6L155.79,88.9a47.84,47.84,0,0,0-55.58,0L71.72,60.4a87.83,87.83,0,0,1,112.56,0ZM71.72,195.6l28.49-28.5a47.84,47.84,0,0,0,55.58,0l28.49,28.5a87.83,87.83,0,0,1-112.56,0Z"
+                ></path>
+              </svg>
+              <span class="ms-3 whitespace-nowrap">Help</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bottom-0 mb-2 mt-auto px-3 text-xs">
+        <div
+          class="group flex items-center rounded-lg p-2 text-gray-900 dark:text-white"
+        >
+          <span>
+            Developed by
+            <a
+              href="#"
+              class="text-sky-500 underline-offset-2 hover:text-sky-600 hover:underline"
+              >Brandname</a
+            >
+          </span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Body -->
+    <div class="p-3 sm:ml-[11.6rem]" id="default-styled-tab-content">
+      <!-- home -->
+      <div
+        class="mt-[3.8rem] hidden sm:p-1"
+        id="styled-home"
+        role="tabpanel"
+        aria-labelledby="home-tab"
+      >
+        <div
+          class="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4"
+        >
+          <!-- clock -->
+          <div
+            class="flex h-auto items-center justify-center rounded-lg bg-neutral-100 px-10 py-6 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-100"
+          >
+            <div class="flex flex-col items-center">
+              <div
+                class="mb-1 flex items-end whitespace-nowrap font-sans text-3xl font-medium tracking-wider"
+              >
+                <span id="hour" class="mr-1">00</span>:
+                <span id="minutes" class="mx-1">00</span>:
+                <span id="seconds" class="mx-1">00</span>
+                <span id="period" class="ml-1 text-lg">AM</span>
+              </div>
+              <div
+                class="whitespace-nowrap font-sans text-xl font-medium tracking-wider"
+              >
+                <span id="dayname">Day</span>,
+                <span id="month">Month</span>
+                <span id="daynum">00</span>,
+                <span id="year">Year</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- schedules -->
+      <div
+        class="mt-[3.8rem] hidden sm:p-1"
+        id="styled-schedules"
+        role="tabpanel"
+        aria-labelledby="schedules-tab"
+      >
+        <!-- Header -->
+        <section class="">
+          <div
+            class="grid w-full grid-cols-4 gap-3 sm:grid-cols-6 md:gap-[1vw]"
+          >
+            <div
+              class="col-span-4 flex h-14 w-full items-center justify-start space-x-2 rounded-lg bg-neutral-100 p-4 font-Poppins text-xl font-semibold tracking-widest text-neutral-950 dark:bg-neutral-900 dark:text-neutral-100"
+              data-aos="fade-up"
+            >
+              <h1 id="tabel-head-1" contenteditable="true" spellcheck="true">
+                Summer Session Schedule 2024
+              </h1>
+              <svg
+                class="h-4 fill-neutral-950 dark:fill-neutral-100"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M208.49,152.49l-72,72a12,12,0,0,1-17,0l-72-72a12,12,0,0,1,17-17L116,187V40a12,12,0,0,1,24,0V187l51.51-51.52a12,12,0,0,1,17,17Z"
+                ></path>
+              </svg>
+            </div>
+
+            <div
+              class="col-span-4 flex h-14 items-center justify-start space-x-2 rounded-lg bg-neutral-100 p-4 font-Poppins text-lg font-semibold tracking-widest text-neutral-950 dark:bg-neutral-900 dark:text-neutral-100 sm:col-span-2"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <h1>July 8th - August 29th</h1>
+            </div>
+          </div>
+        </section>
+
+        <!-- Schedule -->
+        <section class="">
+          <div
+            class="mt-3 grid w-full grid-cols-4 gap-3 sm:grid-cols-6 md:mt-[1vw] md:gap-[1vw]"
+          >
+            <!-- Column 1 Table -->
+            <div class="col-span-4" id="schedule-table">
+              <div
+                class="flex h-auto w-full items-center justify-start overflow-x-scroll rounded-lg bg-neutral-100 font-Poppins text-neutral-950 scrollbar scrollbar-thumb-red-500 dark:bg-neutral-900 dark:text-neutral-100"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <table
+                  class="border-spa table-auto border-separate border-spacing-2 rounded-lg text-xs"
+                >
+                  <thead>
+                    <tr class="text-neutral-100">
+                      <th class="rounded-lg bg-neutral-950 p-2">Schedules</th>
+                      <th class="rounded-lg bg-neutral-950 p-2">Duration</th>
+                      <th class="rounded-lg bg-neutral-950 p-2">Sunday</th>
+                      <th class="rounded-lg bg-neutral-950 p-2">Monday</th>
+                      <th class="rounded-lg bg-neutral-950 p-2">Tuesday</th>
+                      <th class="rounded-lg bg-neutral-950 p-2">Wednesday</th>
+                      <th class="rounded-lg bg-neutral-950 p-2">Thursday</th>
+                      <th class="rounded-lg bg-neutral-950 p-2">Friday</th>
+                      <th class="rounded-lg bg-neutral-950 p-2">Saturday</th>
+                    </tr>
+                  </thead>
+
+                  <tbody class="table--edit text-center font-semibold"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Column 2 Informations -->
+            <div class="col-span-4 sm:col-span-2">
+              <div class="sticky top-3 self-start">
+                <div
+                  class="flex h-fit w-full flex-col items-start justify-start rounded-lg bg-neutral-100 p-4 text-left font-Poppins font-medium leading-relaxed tracking-wider text-neutral-950 dark:bg-neutral-900 dark:text-neutral-100"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
+                  <ul role="list" class="ml-5 list-disc marker:text-red-500">
+                    <li class="mb-3">Taxes not included</li>
+                    <li class="mb-3">
+                      $50 Annual club membership fee not included
+                    </li>
+                    <li class="mb-3 text-red-500">
+                      Gym CLOSED Monday August 5th
+                    </li>
+                    <li>
+                      For a complete list of Aerial Circus Arts classes please
+                      visit the Aerial Antics Website:
+                      <a
+                        class="text-sky-500 underline underline-offset-4 hover:text-red-500"
+                        href="https://www.aerialsottawa.com/"
+                        target="_blank"
+                        >AerialsOttawa.com</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Join Our Club -->
+                <section class="mt-3 md:mt-[1vw]">
+                  <div
+                    class="mt-3 grid grid-cols-2 gap-3 sm:gap-[1vw] md:mt-[1vw]"
+                  >
+                    <!-- Button 1 -->
+                    <button
+                      class="save-table-btn group relative flex h-10 w-full items-center justify-center rounded-lg bg-emerald-500 font-Poppins text-sm font-semibold tracking-widest text-neutral-100 transition-transform hover:scale-[1.02] hover:bg-emerald-400 sm:text-xs lg:text-base"
+                    >
+                      <p>Save</p>
+                    </button>
+
+                    <!-- Button 2 -->
+                    <button
+                      class="reset-table-btn group relative flex h-10 w-full items-center justify-center rounded-lg bg-red-500 font-Poppins text-lg font-semibold tracking-widest text-neutral-100 transition-transform hover:scale-[1.02] hover:bg-red-400 sm:text-xs lg:text-base"
+                    >
+                      <p>Reset</p>
+                    </button>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- help -->
+      <div
+        class="mt-[3.8rem] hidden sm:p-1"
+        id="styled-help"
+        role="tabpanel"
+        aria-labelledby="help-tab"
+      >
+        <div
+          class="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4"
+        >
+          <div
+            class="flex h-auto items-center justify-center rounded-lg bg-neutral-100 px-10 py-6 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-100"
+          >
+            <div class="flex flex-col items-center">help</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main modal -->
+    <div
+      id="crypto-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0"
+    >
+      <div class="relative max-h-full w-full max-w-md p-4">
+        <!-- Modal content -->
+        <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between rounded-t border-b p-4 dark:border-gray-600 md:p-5"
+          >
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              Account Settings
+            </h3>
+            <button
+              type="button"
+              class="ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+              data-modal-toggle="crypto-modal"
+            >
+              <svg
+                class="h-3 w-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                />
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="p-4 md:p-5">
+            <p class="text-sm font-normal text-gray-500 dark:text-gray-400">
+              Connect with one of our available wallet providers or create a new
+              one.
+            </p>
+            <ul class="my-4 space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="group flex items-center rounded-lg bg-gray-50 p-3 text-base font-bold text-gray-900 hover:bg-gray-100 hover:shadow dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4"
+                    viewBox="0 0 40 38"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M39.0728 0L21.9092 12.6999L25.1009 5.21543L39.0728 0Z"
+                      fill="#E17726"
+                    />
+                    <path
+                      d="M0.966797 0.0151367L14.9013 5.21656L17.932 12.7992L0.966797 0.0151367Z"
+                      fill="#E27625"
+                    />
+                    <path
+                      d="M32.1656 27.0093L39.7516 27.1537L37.1004 36.1603L27.8438 33.6116L32.1656 27.0093Z"
+                      fill="#E27625"
+                    />
+                    <path
+                      d="M7.83409 27.0093L12.1399 33.6116L2.89876 36.1604L0.263672 27.1537L7.83409 27.0093Z"
+                      fill="#E27625"
+                    />
+                    <path
+                      d="M17.5203 10.8677L17.8304 20.8807L8.55371 20.4587L11.1924 16.4778L11.2258 16.4394L17.5203 10.8677Z"
+                      fill="#E27625"
+                    />
+                    <path
+                      d="M22.3831 10.7559L28.7737 16.4397L28.8067 16.4778L31.4455 20.4586L22.1709 20.8806L22.3831 10.7559Z"
+                      fill="#E27625"
+                    />
+                    <path
+                      d="M12.4115 27.0381L17.4768 30.9848L11.5928 33.8257L12.4115 27.0381Z"
+                      fill="#E27625"
+                    />
+                    <path
+                      d="M27.5893 27.0376L28.391 33.8258L22.5234 30.9847L27.5893 27.0376Z"
+                      fill="#E27625"
+                    />
+                    <path
+                      d="M22.6523 30.6128L28.6066 33.4959L23.0679 36.1282L23.1255 34.3884L22.6523 30.6128Z"
+                      fill="#D5BFB2"
+                    />
+                    <path
+                      d="M17.3458 30.6143L16.8913 34.3601L16.9286 36.1263L11.377 33.4961L17.3458 30.6143Z"
+                      fill="#D5BFB2"
+                    />
+                    <path
+                      d="M15.6263 22.1875L17.1822 25.4575L11.8848 23.9057L15.6263 22.1875Z"
+                      fill="#233447"
+                    />
+                    <path
+                      d="M24.3739 22.1875L28.133 23.9053L22.8184 25.4567L24.3739 22.1875Z"
+                      fill="#233447"
+                    />
+                    <path
+                      d="M12.8169 27.0049L11.9606 34.0423L7.37109 27.1587L12.8169 27.0049Z"
+                      fill="#CC6228"
+                    />
+                    <path
+                      d="M27.1836 27.0049L32.6296 27.1587L28.0228 34.0425L27.1836 27.0049Z"
+                      fill="#CC6228"
+                    />
+                    <path
+                      d="M31.5799 20.0605L27.6165 24.0998L24.5608 22.7034L23.0978 25.779L22.1387 20.4901L31.5799 20.0605Z"
+                      fill="#CC6228"
+                    />
+                    <path
+                      d="M8.41797 20.0605L17.8608 20.4902L16.9017 25.779L15.4384 22.7038L12.3988 24.0999L8.41797 20.0605Z"
+                      fill="#CC6228"
+                    />
+                    <path
+                      d="M8.15039 19.2314L12.6345 23.7816L12.7899 28.2736L8.15039 19.2314Z"
+                      fill="#E27525"
+                    />
+                    <path
+                      d="M31.8538 19.2236L27.2061 28.2819L27.381 23.7819L31.8538 19.2236Z"
+                      fill="#E27525"
+                    />
+                    <path
+                      d="M17.6412 19.5088L17.8217 20.6447L18.2676 23.4745L17.9809 32.166L16.6254 25.1841L16.625 25.1119L17.6412 19.5088Z"
+                      fill="#E27525"
+                    />
+                    <path
+                      d="M22.3562 19.4932L23.3751 25.1119L23.3747 25.1841L22.0158 32.1835L21.962 30.4328L21.75 23.4231L22.3562 19.4932Z"
+                      fill="#E27525"
+                    />
+                    <path
+                      d="M27.7797 23.6011L27.628 27.5039L22.8977 31.1894L21.9414 30.5138L23.0133 24.9926L27.7797 23.6011Z"
+                      fill="#F5841F"
+                    />
+                    <path
+                      d="M12.2373 23.6011L16.9873 24.9926L18.0591 30.5137L17.1029 31.1893L12.3723 27.5035L12.2373 23.6011Z"
+                      fill="#F5841F"
+                    />
+                    <path
+                      d="M10.4717 32.6338L16.5236 35.5013L16.4979 34.2768L17.0043 33.8323H22.994L23.5187 34.2753L23.48 35.4989L29.4935 32.641L26.5673 35.0591L23.0289 37.4894H16.9558L13.4197 35.0492L10.4717 32.6338Z"
+                      fill="#C0AC9D"
+                    />
+                    <path
+                      d="M22.2191 30.231L23.0748 30.8354L23.5763 34.8361L22.8506 34.2234H17.1513L16.4395 34.8485L16.9244 30.8357L17.7804 30.231H22.2191Z"
+                      fill="#161616"
+                    />
+                    <path
+                      d="M37.9395 0.351562L39.9998 6.53242L38.7131 12.7819L39.6293 13.4887L38.3895 14.4346L39.3213 15.1542L38.0875 16.2779L38.8449 16.8264L36.8347 19.1742L28.5894 16.7735L28.5179 16.7352L22.5762 11.723L37.9395 0.351562Z"
+                      fill="#763E1A"
+                    />
+                    <path
+                      d="M2.06031 0.351562L17.4237 11.723L11.4819 16.7352L11.4105 16.7735L3.16512 19.1742L1.15488 16.8264L1.91176 16.2783L0.678517 15.1542L1.60852 14.4354L0.350209 13.4868L1.30098 12.7795L0 6.53265L2.06031 0.351562Z"
+                      fill="#763E1A"
+                    />
+                    <path
+                      d="M28.1861 16.2485L36.9226 18.7921L39.7609 27.5398L32.2728 27.5398L27.1133 27.6049L30.8655 20.2912L28.1861 16.2485Z"
+                      fill="#F5841F"
+                    />
+                    <path
+                      d="M11.8139 16.2485L9.13399 20.2912L12.8867 27.6049L7.72971 27.5398H0.254883L3.07728 18.7922L11.8139 16.2485Z"
+                      fill="#F5841F"
+                    />
+                    <path
+                      d="M25.5283 5.17383L23.0847 11.7736L22.5661 20.6894L22.3677 23.4839L22.352 30.6225H17.6471L17.6318 23.4973L17.4327 20.6869L16.9139 11.7736L14.4707 5.17383H25.5283Z"
+                      fill="#F5841F"
+                    />
+                  </svg>
+                  <span class="ms-3 flex-1 whitespace-nowrap">MetaMask</span>
+                  <span
+                    class="ms-3 inline-flex items-center justify-center rounded bg-gray-200 px-2 py-0.5 text-xs font-medium text-gray-500 dark:bg-gray-700 dark:text-gray-400"
+                    >Popular</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="group flex items-center rounded-lg bg-gray-50 p-3 text-base font-bold text-gray-900 hover:bg-gray-100 hover:shadow dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-5"
+                    viewBox="0 0 292 292"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M145.7 291.66C226.146 291.66 291.36 226.446 291.36 146C291.36 65.5541 226.146 0.339844 145.7 0.339844C65.2542 0.339844 0.0400391 65.5541 0.0400391 146C0.0400391 226.446 65.2542 291.66 145.7 291.66Z"
+                      fill="#3259A5"
+                    />
+                    <path
+                      d="M195.94 155.5C191.49 179.08 170.8 196.91 145.93 196.91C117.81 196.91 95.0204 174.12 95.0204 146C95.0204 117.88 117.81 95.0897 145.93 95.0897C170.8 95.0897 191.49 112.93 195.94 136.5H247.31C242.52 84.7197 198.96 44.1797 145.93 44.1797C89.6904 44.1797 44.1104 89.7697 44.1104 146C44.1104 202.24 89.7004 247.82 145.93 247.82C198.96 247.82 242.52 207.28 247.31 155.5H195.94Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <span class="ms-3 flex-1 whitespace-nowrap"
+                    >Coinbase Wallet</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="group flex items-center rounded-lg bg-gray-50 p-3 text-base font-bold text-gray-900 hover:bg-gray-100 hover:shadow dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+                >
+                  <svg
+                    aria-hidden="true"
+                    svg
+                    class="h-5"
+                    viewBox="0 0 75.591 75.591"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <linearGradient
+                      id="a"
+                      gradientTransform="matrix(0 -54.944 -54.944 0 23.62 79.474)"
+                      gradientUnits="userSpaceOnUse"
+                      x2="1"
+                    >
+                      <stop offset="0" stop-color="#ff1b2d" />
+                      <stop offset=".3" stop-color="#ff1b2d" />
+                      <stop offset=".614" stop-color="#ff1b2d" />
+                      <stop offset="1" stop-color="#a70014" />
+                    </linearGradient>
+                    <linearGradient
+                      id="b"
+                      gradientTransform="matrix(0 -48.595 -48.595 0 37.854 76.235)"
+                      gradientUnits="userSpaceOnUse"
+                      x2="1"
+                    >
+                      <stop offset="0" stop-color="#9c0000" />
+                      <stop offset=".7" stop-color="#ff4b4b" />
+                      <stop offset="1" stop-color="#ff4b4b" />
+                    </linearGradient>
+                    <g transform="matrix(1.3333 0 0 -1.3333 0 107.2)">
+                      <path
+                        d="m28.346 80.398c-15.655 0-28.346-12.691-28.346-28.346 0-15.202 11.968-27.609 26.996-28.313.44848-.02115.89766-.03314 1.3504-.03314 7.2574 0 13.876 2.7289 18.891 7.2137-3.3227-2.2036-7.2074-3.4715-11.359-3.4715-6.7504 0-12.796 3.3488-16.862 8.6297-3.1344 3.6999-5.1645 9.1691-5.3028 15.307v1.3349c.13821 6.1377 2.1683 11.608 5.302 15.307 4.0666 5.2809 10.112 8.6297 16.862 8.6297 4.1526 0 8.038-1.2679 11.361-3.4729-4.9904 4.4643-11.569 7.1876-18.786 7.2144-.03596 0-.07122.0014-.10718.0014z"
+                        fill="url(#a)"
+                      />
+                      <path
+                        d="m19.016 68.025c2.6013 3.0709 5.9607 4.9227 9.631 4.9227 8.2524 0 14.941-9.356 14.941-20.897s-6.6891-20.897-14.941-20.897c-3.6703 0-7.0297 1.851-9.6303 4.922 4.0659-5.2809 10.111-8.6297 16.862-8.6297 4.1519 0 8.0366 1.2679 11.359 3.4715 5.802 5.1906 9.4554 12.735 9.4554 21.133 0 8.397-3.6527 15.941-9.4533 21.131-3.3234 2.205-7.2088 3.4729-11.361 3.4729-6.7504 0-12.796-3.3488-16.862-8.6297"
+                        fill="url(#b)"
+                      />
+                    </g>
+                  </svg>
+                  <span class="ms-3 flex-1 whitespace-nowrap"
+                    >Opera Wallet</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="group flex items-center rounded-lg bg-gray-50 p-3 text-base font-bold text-gray-900 hover:bg-gray-100 hover:shadow dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-5"
+                    viewBox="0 0 512 512"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <defs>
+                      <radialGradient
+                        cx="0%"
+                        cy="50%"
+                        fx="0%"
+                        fy="50%"
+                        r="100%"
+                        id="radialGradient-1"
+                      >
+                        <stop stop-color="#5D9DF6" offset="0%"></stop>
+                        <stop stop-color="#006FFF" offset="100%"></stop>
+                      </radialGradient>
+                    </defs>
+                    <g
+                      id="Page-1"
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g id="logo">
+                        <rect
+                          id="base"
+                          fill="url(#radialGradient-1)"
+                          x="0"
+                          y="0"
+                          width="512"
+                          height="512"
+                          rx="256"
+                        ></rect>
+                        <path
+                          d="M169.209772,184.531136 C217.142772,137.600733 294.857519,137.600733 342.790517,184.531136 L348.559331,190.179285 C350.955981,192.525805 350.955981,196.330266 348.559331,198.676787 L328.82537,217.99798 C327.627045,219.171241 325.684176,219.171241 324.485851,217.99798 L316.547278,210.225455 C283.10802,177.485633 228.89227,177.485633 195.453011,210.225455 L186.951456,218.549188 C185.75313,219.722448 183.810261,219.722448 182.611937,218.549188 L162.877976,199.227995 C160.481326,196.881474 160.481326,193.077013 162.877976,190.730493 L169.209772,184.531136 Z M383.602212,224.489406 L401.165475,241.685365 C403.562113,244.031874 403.562127,247.836312 401.165506,250.182837 L321.971538,327.721548 C319.574905,330.068086 315.689168,330.068112 313.292501,327.721609 C313.292491,327.721599 313.29248,327.721588 313.29247,327.721578 L257.08541,272.690097 C256.486248,272.103467 255.514813,272.103467 254.915651,272.690097 C254.915647,272.690101 254.915644,272.690105 254.91564,272.690108 L198.709777,327.721548 C196.313151,330.068092 192.427413,330.068131 190.030739,327.721634 C190.030725,327.72162 190.03071,327.721606 190.030695,327.721591 L110.834524,250.181849 C108.437875,247.835329 108.437875,244.030868 110.834524,241.684348 L128.397819,224.488418 C130.794468,222.141898 134.680206,222.141898 137.076856,224.488418 L193.284734,279.520668 C193.883897,280.107298 194.85533,280.107298 195.454493,279.520668 C195.454502,279.520659 195.45451,279.520651 195.454519,279.520644 L251.65958,224.488418 C254.056175,222.141844 257.941913,222.141756 260.338618,224.488222 C260.338651,224.488255 260.338684,224.488288 260.338717,224.488321 L316.546521,279.520644 C317.145683,280.107273 318.117118,280.107273 318.71628,279.520644 L374.923175,224.489406 C377.319825,222.142885 381.205562,222.142885 383.602212,224.489406 Z"
+                          id="WalletConnect"
+                          fill="#FFFFFF"
+                          fill-rule="nonzero"
+                        ></path>
+                      </g>
+                    </g>
+                  </svg>
+                  <span class="ms-3 flex-1 whitespace-nowrap"
+                    >WalletConnect</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="group flex items-center rounded-lg bg-gray-50 p-3 text-base font-bold text-gray-900 hover:bg-gray-100 hover:shadow dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4"
+                    viewBox="0 0 96 96"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M72.0998 0.600098H48.3998H24.5998H0.799805V24.4001V48.2001V49.7001V71.8001V71.9001V95.5001H24.5998V72.0001V71.9001V49.8001V48.3001V24.5001H48.3998H72.1998H95.9998V0.700104H72.0998V0.600098Z"
+                      fill="#617BFF"
+                    />
+                    <path
+                      d="M48.5 71.8002H72.1V95.6002H73C79.1 95.6002 84.9 93.2002 89.2 88.9002C93.5 84.6002 95.9 78.8002 95.9 72.7002V48.2002H48.5V71.8002Z"
+                      fill="#617BFF"
+                    />
+                  </svg>
+                  <span class="ms-3 flex-1 whitespace-nowrap">Fortmatic</span>
+                </a>
+              </li>
+            </ul>
+            <div>
+              <a
+                href="#"
+                class="inline-flex items-center text-xs font-normal text-gray-500 hover:underline dark:text-gray-400"
+              >
+                <svg
+                  class="me-2 h-3 w-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7.529 7.988a2.502 2.502 0 0 1 5 .191A2.441 2.441 0 0 1 10 10.582V12m-.01 3.008H10M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+                Why do I need to connect with my wallet?</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script type="module" src="./scripts/admin.js"></script>
+  </body>
+</html>
